@@ -14,7 +14,7 @@
          <Font name="Bookman Old Style Bold Italic" size="18.0" />
       </font>
    </Label>
-   <TextArea fx:id="textArea" onInputMethodTextChanged="#textFieldController" prefHeight="200.0" prefWidth="200.0" />
+   <TextArea fx:id="textArea" onInputMethodTextChanged="#textFieldController" onKeyPressed="#textFieldController" prefHeight="200.0" prefWidth="200.0" />
 
     <Label fx:id="welcomeText" />
     <Button alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" onAction="#onClassifyButtonClick" prefHeight="46.0" prefWidth="96.0" text="Classify" textAlignment="CENTER">

@@ -47,12 +47,12 @@ public class NaiveBayes {
         return 1;
     }
 
-    public void calculation(FrequencyTableGenerate frequencyTableGenerate){
+    public void calculation(FrequencyTableGenerate frequencyTableGenerate, String text){
         int totalWord = 0;
         for(int i=0;i<5;i++){
            totalWord += frequencyTableGenerate.eachCategoryWord[i];
         }
-        ArrayList<String> words = formatUserInput();
+        ArrayList<String> words = formatUserInput(text);
         int finalTotalWord = totalWord;
         frequencyTableGenerate.newsCategory.forEach((category, value)->{
             double probability= ((double)frequencyTableGenerate.eachCategoryWord[value]/ (double)finalTotalWord);
@@ -84,12 +84,12 @@ public class NaiveBayes {
         return 1;
     }
 
-    public ArrayList<String> formatUserInput(){
-        System.out.println("Input news: ");
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
+    public ArrayList<String> formatUserInput(String text){
+//        System.out.println("Input news: ");
+//        Scanner sc = new Scanner(System.in);
+//        String line = sc.nextLine();
         Stemming stemming = new Stemming();
-        ArrayList<String> words = stemming.stem(line);
+        ArrayList<String> words = stemming.stem(text);
 
         return words;
     }
@@ -120,13 +120,30 @@ public class NaiveBayes {
         return prob;
     }
 
+    public String returnClassification(String text){
+        String[] category = {"sport","business","tech","politics","entertainment"};
+        FrequencyTableGenerate frequencyTableGenerate =  getDataObject();
+        calculation(frequencyTableGenerate, text);
+        double[] probability = probabilityCalculation();
+        double maxProbability=0.0;
+        int index = -1;
+        for(int i=0;i<5;i++){
+            if(maxProbability < probability[i]){
+                maxProbability = probability[i];
+                index = i;
+            }
+        }
+
+        return category[index];
+    }
+
 
 
     public static void main(String[] args) {
-        NaiveBayes naiveBayes = new NaiveBayes();
-        FrequencyTableGenerate frequencyTableGenerate =  naiveBayes.getDataObject();
-        naiveBayes.calculation(frequencyTableGenerate);
-        naiveBayes.probabilityCalculation();
+//        NaiveBayes naiveBayes = new NaiveBayes();
+//        FrequencyTableGenerate frequencyTableGenerate =  naiveBayes.getDataObject();
+//        naiveBayes.calculation(frequencyTableGenerate);
+//        naiveBayes.probabilityCalculation();
     }
 
 }
