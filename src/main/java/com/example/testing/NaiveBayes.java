@@ -1,6 +1,7 @@
 package com.example.testing;
-import steaming.Stemming;
-import training.FrequencyTableGenerate;
+import com.example.steaming.Stemming;
+import com.example.training.FrequencyTableGenerate;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
