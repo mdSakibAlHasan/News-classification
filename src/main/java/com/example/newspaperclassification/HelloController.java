@@ -2,7 +2,10 @@ package com.example.newspaperclassification;
 
 import com.example.testing.NaiveBayes;
 import com.example.testing.NewDataAdd;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -19,6 +22,20 @@ public class HelloController {
     private boolean checkButtonClick=false;
 
     @FXML
+    private ChoiceBox<String> choiceId;
+    ObservableList<String> options = FXCollections.observableArrayList("sport","business","tech","politics","entertainment");
+
+    @FXML
+    public void checkboxController(){
+
+        choiceId.setItems(options);
+        //choiceId.setValue(type);
+        System.out.println("Click on checkbox"+choiceId.getValue());
+    }
+
+
+
+    @FXML
     protected void onClassifyButtonClick() {
        String inputText =  textArea.getText();
         System.out.println("Input text is: "+inputText);
@@ -28,6 +45,8 @@ public class HelloController {
 
         classificationLabel.setText(classification);
         checkButtonClick = false;
+        checkboxController();
+        choiceId.setValue(classification);
     }
 
     @FXML
@@ -38,6 +57,7 @@ public class HelloController {
     @FXML
     protected void addTrainingSectionCheckBox(){
         System.out.println("Check box clicked");
+        System.out.println("Choice list array are: "+choiceId.getValue());
         if(classificationLabel.getText().length()>3 && textArea.getText().length()>200 && !checkButtonClick){
             NewDataAdd newDataAdd = new NewDataAdd();
             newDataAdd.writeData(textArea.getText(),classificationLabel.getText());
