@@ -1,6 +1,9 @@
 package com.example.training;
 
 import com.example.steaming.Stemming;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 import java.io.*;
 import java.util.*;
@@ -8,6 +11,7 @@ import java.util.*;
 public class ProcessData {
     Stemming stemming = new Stemming();
     FrequencyTableGenerate frequencyTableGenerate = new FrequencyTableGenerate();
+
     private  void readCSV(String file){
         try {
             Scanner sc = new Scanner(new File(file));

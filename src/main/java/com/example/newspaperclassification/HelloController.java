@@ -5,9 +5,9 @@ import com.example.testing.NewDataAdd;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HelloController {
 
@@ -60,12 +60,16 @@ public class HelloController {
         System.out.println("Choice list array are: "+choiceId.getValue());
         if(classificationLabel.getText().length()>3 && textArea.getText().length()>200 && !checkButtonClick){
             NewDataAdd newDataAdd = new NewDataAdd();
-            newDataAdd.writeData(textArea.getText(),classificationLabel.getText());
+            newDataAdd.writeData(textArea.getText(),choiceId.getValue());
             checkButtonClick = true;
         }
         else{
             System.out.println("Length is very small");
         }
+
+    }
+
+    public void conformationBox(){
 
     }
 }
