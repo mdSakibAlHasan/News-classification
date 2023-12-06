@@ -17,6 +17,9 @@ public class HelloController {
     private TextArea textArea;
 
     @FXML
+    private CheckBox checkBox;
+
+    @FXML
     private Label classificationLabel;
 
     private boolean checkButtonClick=false;
@@ -31,6 +34,7 @@ public class HelloController {
         choiceId.setItems(options);
         //choiceId.setValue(type);
         System.out.println("Click on checkbox"+choiceId.getValue());
+        choiceId.setValue("");
     }
 
 
@@ -52,6 +56,8 @@ public class HelloController {
     @FXML
     protected void textFieldController(){
         classificationLabel.setText("");
+        checkBox.setSelected(false);
+
     }
 
     @FXML

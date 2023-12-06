@@ -23,7 +23,7 @@ public class ProcessData {
                 lines = sc.nextLine();
                 String[] words = lines.split(",");
                 //System.out.println(words[0]+"\n\n "+words[1]);
-                stemming(words[1],words[2]);
+                stemming(words[0],words[1]);
             }
             sc.close();
         }
@@ -67,7 +67,7 @@ public class ProcessData {
 
     public static void main(String[] args) {
         ProcessData processData = new ProcessData();
-        processData.readCSV("BBC News Train.csv");
+        processData.readCSV("news.csv");
         //processData.readCSV("news.csv");
         processData.serializeObject();
 

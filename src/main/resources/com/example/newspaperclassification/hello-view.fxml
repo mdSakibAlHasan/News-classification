@@ -31,7 +31,7 @@
    </Label>
    <HBox>
       <children>
-         <CheckBox mnemonicParsing="false" onAction="#addTrainingSectionCheckBox" onKeyPressed="#addTrainingSectionCheckBox" text="Satisfy with this classification" />
+         <CheckBox fx:id="checkBox" mnemonicParsing="false" onAction="#addTrainingSectionCheckBox" onKeyPressed="#addTrainingSectionCheckBox" text="Satisfy with this classification" />
          <ChoiceBox fx:id="choiceId" onInputMethodTextChanged="#checkboxController" onKeyPressed="#checkboxController" onKeyTyped="#checkboxController" prefWidth="150.0" />
       </children>
       <VBox.margin>
